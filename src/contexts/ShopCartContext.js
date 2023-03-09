@@ -5,17 +5,21 @@ export const CartContext = createContext();
 export default function CartProvider({ children }) {
   const [productsCart, setProductsCart] = useState([]);
 
-  //{id: 1, qtd:1}
-
   function addProducToCart(product) {
     const copyProductsCart = [...productsCart];
 
     const item = copyProductsCart.find((prev) => prev.id === product.id);
 
     if (!item) {
-      copyProductsCart.push({ id: product.id, qtd: 1, nome: product.nome, foto: product.foto, preco: product.preco});
+      copyProductsCart.push({
+        id: product.id,
+        amount: 1,
+        nome: product.nome,
+        foto: product.foto,
+        preco: product.preco,
+      });
     } else {
-      item.qtd = item.qtd + 1;
+      item.amount = item.amount + 1;
     }
 
     setProductsCart(copyProductsCart);
@@ -26,8 +30,8 @@ export default function CartProvider({ children }) {
 
     const item = copyProductsCart.find((product) => product.id === id);
 
-    if (item && item.qtd > 1) {
-      item.qtd = item.qtd - 1;
+    if (item && item.amount > 1) {
+      item.amount = item.amount - 1;
       setProductsCart(copyProductsCart);
     } else {
       const arrayFiltered = copyProductsCart.filter(

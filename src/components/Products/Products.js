@@ -51,8 +51,8 @@ export function Products() {
                 <RemoveIcon />
               </IconButton>
               <h3>
-                {productsCart.find((item) => item.id === product.id)?.qtd
-                  ? productsCart.find((item) => item.id === product.id)?.qtd
+                {productsCart.find((item) => item.id === product.id)?.amount
+                  ? productsCart.find((item) => item.id === product.id)?.amount
                   : 0}
               </h3>
               <IconButton size="large" onClick={() => addProducToCart(product)}>

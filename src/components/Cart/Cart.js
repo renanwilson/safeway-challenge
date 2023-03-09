@@ -19,7 +19,7 @@ export function Cart() {
   };
   const handlePrice = () => {
     let ans = 0;
-    productsCart.map((item) => (ans += item.qtd * item.preco));
+    productsCart.map((item) => (ans += item.amount * item.preco));
     setPrice(ans);
   };
   useEffect(() => {
@@ -30,7 +30,7 @@ export function Cart() {
     <div className="container">
       <h1>Carrinho</h1>
       {productsCart.map((product) => {
-        const total = product.preco * product.qtd;
+        const total = product.preco * product.amount;
         return (
           <div key={product.id} className="card">
             <img src={product.foto} alt="" className="photo" />
@@ -47,8 +47,8 @@ export function Cart() {
                 <RemoveIcon />
               </IconButton>
               <h3>
-                {productsCart.find((item) => item.id === product.id)?.qtd
-                  ? productsCart.find((item) => item.id === product.id)?.qtd
+                {productsCart.find((item) => item.id === product.id)?.amount
+                  ? productsCart.find((item) => item.id === product.id)?.amount
                   : 0}
               </h3>
               <IconButton size="large" onClick={() => addProducToCart(product)}>
