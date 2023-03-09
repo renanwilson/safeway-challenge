@@ -4,6 +4,8 @@ import "./Cart.styles.scss";
 import { useNavigate } from "react-router-dom";
 import { toMoney } from "../../utils/money";
 import { Cards } from "../Cards/Cards";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
 
 export function Cart() {
   const { productsCart, clearCart } = useContext(CartContext);
@@ -27,8 +29,17 @@ export function Cart() {
     <div className="container">
       <h1>Carrinho</h1>
       <Cards products={productsCart} />
-      <h1>Total: {toMoney(price)}</h1>
-      <button onClick={() => handleBuy()}>Comprar</button>
+      <div className="infos">
+        <h1>Total: {toMoney(price)}</h1>
+        <Button
+          variant="outlined"
+          endIcon={<SendIcon />}
+          onClick={() => handleBuy()}
+          size="medium"
+        >
+          Comprar
+        </Button>
+      </div>
     </div>
   );
 }

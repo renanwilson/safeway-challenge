@@ -5,4 +5,10 @@
   width: 100%;
   gap: 5rem;
   margin-top: 5%;
+  .infos {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

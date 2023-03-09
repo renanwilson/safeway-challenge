@@ -9,7 +9,7 @@ export const RoutesApp = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<Home />} path="/" />
-        <Route element={<Carts />} path="/seila" />
+        <Route element={<Carts />} path="/cart" />
       </Routes>
     </BrowserRouter>
   );
