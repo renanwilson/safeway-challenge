@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 5rem;
+    margin-top: 5%;
+    .card{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+        align-items: flex-start;
+        .photo{
+            max-width: 200px;
+            height: 200px;
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30%;
+        }
+    }
+    .button {
+        display: flex;
+    }
+}
