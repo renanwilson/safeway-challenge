@@ -1,10 +1,11 @@
 import { useEffect, useState, useContext } from "react";
-import { getProducts } from "../../services/service"
+import { getProducts } from "../../services/service";
 import { CartContext } from "../../contexts/ShopCartContext";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import "./Products.styles.scss";
 import { IconButton } from "@mui/material";
+import { toMoney } from "../../utils/money";
 
 export function Products() {
   const INITIAL_STATE = [
@@ -31,7 +32,7 @@ export function Products() {
 
   return (
     <div className="container">
-        <h1> Produtos </h1>
+      <h1> Produtos </h1>
       {products.map((product) => {
         return (
           <div key={product.id} className="card">
@@ -40,7 +41,7 @@ export function Products() {
             <div className="info">
               <h1> {product.nome}</h1>
               <p>{product.descricao}</p>
-              <p>{product.preco.toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</p>
+              <p>{toMoney(product.preco)}</p>
             </div>
             <div className="button">
               <IconButton
@@ -50,10 +51,10 @@ export function Products() {
                 <RemoveIcon />
               </IconButton>
               <h3>
-              {productsCart.find((item) => item.id === product.id)?.qtd
-                ? productsCart.find((item) => item.id === product.id)?.qtd
-                : 0}
-            </h3>
+                {productsCart.find((item) => item.id === product.id)?.qtd
+                  ? productsCart.find((item) => item.id === product.id)?.qtd
+                  : 0}
+              </h3>
               <IconButton size="large" onClick={() => addProducToCart(product)}>
                 <AddIcon />
               </IconButton>

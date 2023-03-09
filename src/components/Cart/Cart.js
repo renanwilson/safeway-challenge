@@ -5,6 +5,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { IconButton } from "@mui/material";
 import "./Cart.styles.scss";
 import { useNavigate } from "react-router-dom";
+import { toMoney } from "../../utils/money";
+
 export function Cart() {
   const { productsCart, removeProductToCart, addProducToCart, clearCart } =
     useContext(CartContext);
@@ -35,13 +37,7 @@ export function Cart() {
 
             <div className="info">
               <h1> {product.nome}</h1>
-              <p>
-                Total:{" "}
-                {total.toLocaleString("pt-br", {
-                  style: "currency",
-                  currency: "BRL",
-                })}
-              </p>
+              <p>Total: {toMoney(total)}</p>
             </div>
             <div className="button">
               <IconButton
@@ -62,10 +58,7 @@ export function Cart() {
           </div>
         );
       })}
-      <h1>
-        Total:{" "}
-        {price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
-      </h1>
+      <h1>Total: {toMoney(price)}</h1>
       <button onClick={() => handleBuy()}>Comprar</button>
     </div>
   );
