@@ -1,15 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../../contexts/ShopCartContext";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { IconButton } from "@mui/material";
 import "./Cart.styles.scss";
 import { useNavigate } from "react-router-dom";
 import { toMoney } from "../../utils/money";
+import { Cards } from "../Cards/Cards";
 
 export function Cart() {
-  const { productsCart, removeProductToCart, addProducToCart, clearCart } =
-    useContext(CartContext);
+  const { productsCart, clearCart } = useContext(CartContext);
   const [price, setPrice] = useState(0);
   const navigate = useNavigate();
   const handleBuy = () => {
@@ -29,35 +26,7 @@ export function Cart() {
   return (
     <div className="container">
       <h1>Carrinho</h1>
-      {productsCart.map((product) => {
-        const total = product.preco * product.amount;
-        return (
-          <div key={product.id} className="card">
-            <img src={product.foto} alt="" className="photo" />
-
-            <div className="info">
-              <h1> {product.nome}</h1>
-              <p>Total: {toMoney(total)}</p>
-            </div>
-            <div className="button">
-              <IconButton
-                size="large"
-                onClick={() => removeProductToCart(product.id)}
-              >
-                <RemoveIcon />
-              </IconButton>
-              <h3>
-                {productsCart.find((item) => item.id === product.id)?.amount
-                  ? productsCart.find((item) => item.id === product.id)?.amount
-                  : 0}
-              </h3>
-              <IconButton size="large" onClick={() => addProducToCart(product)}>
-                <AddIcon />
-              </IconButton>
-            </div>
-          </div>
-        );
-      })}
+      <Cards products={productsCart} />
       <h1>Total: {toMoney(price)}</h1>
       <button onClick={() => handleBuy()}>Comprar</button>
     </div>
