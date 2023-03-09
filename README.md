@@ -4,7 +4,6 @@
 
 Este projeto está usando: 
 - [ReactJS](https://reactjs.org)
-- [typescript](https://www.typescriptlang.org)
 
 Libs:
 - [sass](https://sass-lang.com)
